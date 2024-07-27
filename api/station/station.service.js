@@ -27,7 +27,7 @@ async function query() {
 
 async function getById(stationId) {
 	try {
-        const criteria = { _id: stationId}
+        const criteria = { _id: ObjectId.createFromHexString(stationId)}
 
 		const collection = await dbService.getCollection('station')
 		const station = await collection.findOne(criteria)
@@ -40,10 +40,12 @@ async function getById(stationId) {
 }
 
 async function remove(stationId) {
+	const { loggedinUser } = asyncLocalStorage.getStore()
+    const { _id: ownerId} = loggedinUser
+
 	try {
-        const criteria = { 
-            _id: stationId, 
-        }
+        const criteria = { _id: ObjectId.createFromHexString(stationId)}
+		criteria['createdBy._id'] = ownerId
         
 		const collection = await dbService.getCollection('station')
 		const res = await collection.deleteOne(criteria)
@@ -69,11 +71,10 @@ async function add(station) {
 }
 
 async function update(station) {
-    const stationToSave = { imgUrl: station.imgUrl, title: station.title }
-
+    const stationToSave = { imgUrl: station.createdBy.imgUrl, title: station.title, songs: station.songs, description: station.description, name: station.name }
     try {
-        const criteria = { _id: station._id }
-
+        const criteria = { _id: ObjectId.createFromHexString(station._id)}
+		
 		const collection = await dbService.getCollection('station')
 		await collection.updateOne(criteria, { $set: stationToSave })
 

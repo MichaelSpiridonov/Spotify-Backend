@@ -26,7 +26,8 @@ export async function addStation(req, res) {
 	const { loggedinUser, body: station } = req
 
 	try {
-		station.owner = loggedinUser
+		station.createdBy = loggedinUser
+		logger.info(station)
 		const addedStation = await stationService.add(station)
 		res.json(addedStation)
 	} catch (err) {
@@ -39,12 +40,13 @@ export async function updateStation(req, res) {
 	const { loggedinUser, body: station } = req
     const { _id: userId } = loggedinUser
 
-    if(station.owner._id !== userId) {
+    if(station.createdBy._id !== userId) {
         res.status(403).send('Not your station...')
         return
     }
 
 	try {
+		const station = req.body
 		const updatedStation = await stationService.update(station)
 		res.json(updatedStation)
 	} catch (err) {

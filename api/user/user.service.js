@@ -95,8 +95,6 @@ async function add(user) {
 			password: user.password,
 			fullname: user.fullname,
 			imgUrl: user.imgUrl,
-			isAdmin: user.isAdmin,
-			score: 100,
 		}
 		const collection = await dbService.getCollection('user')
 		await collection.insertOne(userToAdd)
@@ -119,9 +117,6 @@ function _buildCriteria(filterBy) {
 				fullname: txtCriteria,
 			},
 		]
-	}
-	if (filterBy.minBalance) {
-		criteria.score = { $gte: filterBy.minBalance }
 	}
 	return criteria
 }
