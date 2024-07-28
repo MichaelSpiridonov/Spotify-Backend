@@ -1,5 +1,6 @@
 import configProd from './prod.js'
 import configDev from './dev.js'
+import { logger } from '../services/logger.service.js'
 
 
 export var config

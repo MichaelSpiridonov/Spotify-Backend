@@ -1,0 +1,43 @@
+[{
+  "_id": "dseq31kigrq9419wqdt",
+  "name": "Liked Songs",
+  "createdBy": {
+    "_id": "u666",
+    "fullname": "Liked Songs",
+    "imgUrl": "https://res.cloudinary.com/dvubhdy64/image/upload/v1721520195/spotify/kkjpfxtcj9xetuqaeg0q.png"
+  },
+  "songs": [
+    {
+      "title": "באמפרים",
+      "duration": 147000,
+      "isExplicit": false,
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/7lwdlhwSxbB36wqnOwo5Kd"
+          },
+          "href": "https://api.spotify.com/v1/artists/7lwdlhwSxbB36wqnOwo5Kd",
+          "id": "7lwdlhwSxbB36wqnOwo5Kd",
+          "name": "STILLA",
+          "type": "artist",
+          "uri": "spotify:artist:7lwdlhwSxbB36wqnOwo5Kd"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2ygecp3YQJwBHL7LNzDgwe"
+          },
+          "href": "https://api.spotify.com/v1/artists/2ygecp3YQJwBHL7LNzDgwe",
+          "id": "2ygecp3YQJwBHL7LNzDgwe",
+          "name": "Ness",
+          "type": "artist",
+          "uri": "spotify:artist:2ygecp3YQJwBHL7LNzDgwe"
+        }
+      ],
+      "imgUrl": "https://i.scdn.co/image/ab67616d0000b273cef99adb7e9fc45697d1ca88",
+      "albumName": "באמפרים",
+      "addedAt": {
+        "$numberLong": "1716854400000"
+      }
+    }
+  ]
+}]
