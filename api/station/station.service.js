@@ -71,7 +71,7 @@ async function add(station) {
 }
 
 async function update(station) {
-    const stationToSave = { imgUrl: station.createdBy.imgUrl, title: station.title, songs: station.songs, description: station.description, name: station.name }
+    const stationToSave = { imgUrl: station.imgUrl, title: station.title, songs: station.songs, description: station.description, name: station.name }
     try {
         const criteria = { _id: ObjectId.createFromHexString(station._id)}
 		
