@@ -24,11 +24,12 @@ async function query() {
 
 async function getById(albumId) {
 	try {
-        const criteria = { _id: albumId }
+		console.log('album')
+		const criteria = { _id: ObjectId.createFromHexString(albumId)}
 
 		const collection = await dbService.getCollection('album')
+	
 		const album = await collection.findOne(criteria)
-        
 		album.createdAt = album._id.getTimestamp()
 		return album
 	} catch (err) {
