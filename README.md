@@ -1,1 +1,1 @@
-Coding Academy - production ready server 
+Beatify Backend - Readme to be released
