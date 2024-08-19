@@ -9,6 +9,7 @@ import { userRoutes } from './api/user/user.routes.js'
 import { albumRoutes } from './api/album/album.routes.js'
 import { stationRoutes } from './api/station/station.routes.js'
 import { spotifyRoutes } from './api/spotify/spotify.routes.js'
+import { youtubeRoutes } from './api/youtube/youtube.routes.js'
 import { setupSocketAPI } from './services/socket.service.js'
 
 import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.js'
@@ -41,6 +42,7 @@ app.use('/api/user', userRoutes)
 app.use('/api/album', albumRoutes)
 app.use('/api/station', stationRoutes)
 app.use('/api/spotify', spotifyRoutes)
+app.use('/api/youtube', youtubeRoutes)
 
 setupSocketAPI(server)
 
