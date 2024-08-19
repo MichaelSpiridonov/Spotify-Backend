@@ -51,3 +51,6 @@ function clearHistory() {
   gYoutubeCache = {}
 }
 
+function getKeywords() {
+  return Object.keys(gYoutubeCache)
+}
