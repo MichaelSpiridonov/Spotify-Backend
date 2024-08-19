@@ -14,9 +14,6 @@ export const youtubeService = {
 
 
 export async function getVideos(searchVal) {
-  if (gYoutubeCache[searchVal]) {
-    return Promise.resolve(gYoutubeCache[searchVal])
-  }
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${gVideosAmount}&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${searchVal}`
 
@@ -54,6 +51,3 @@ function clearHistory() {
   gYoutubeCache = {}
 }
 
-function getKeywords() {
-  return Object.keys(gYoutubeCache)
-}
