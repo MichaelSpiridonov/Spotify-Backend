@@ -1,19 +1,15 @@
 import axios from 'axios'
 import 'dotenv/config'
-const YT_API_KEY = process.env.YT_API_KEY
 
+const YT_API_KEY = process.env.YT_API_KEY
 
 const gVideosAmount = 5
 
 export const youtubeService = {
-  getVideos,
-  getValidFormatWord,
-  clearHistory,
-  getKeywords,
+  getVideos
 }
 
-
-export async function getVideos(searchVal) {
+async function getVideos(searchVal) {
 
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${gVideosAmount}&videoEmbeddable=true&type=video&key=${YT_API_KEY}&q=${searchVal}`
 
@@ -22,7 +18,7 @@ export async function getVideos(searchVal) {
     let videos = response.data.items
 
     // Assuming getVideoDetails is an async function
-    videos = await Promise.all(videos.map((video) => getVideoDetails(video)))
+    videos = await Promise.all(videos.map((video) => _getVideoDetails(video)))
 
     return videos
   } catch (error) {
@@ -31,26 +27,10 @@ export async function getVideos(searchVal) {
   }
 }
 
-function getVideoDetails(video) {
+async function _getVideoDetails(video) {
   const { id, snippet } = video
   const { title, thumbnails } = snippet
   const videoId = id.videoId
   const thumbnail = thumbnails.default.url
   return { videoId, title, thumbnail }
-}
-
-function getValidFormatWord(str) {
-  let strArr = str.split('')
-  let formatedArr = strArr.map((letter) => {
-    return letter === ' ' ? '_' : letter
-  })
-  return formatedArr.join('')
-}
-
-function clearHistory() {
-  gYoutubeCache = {}
-}
-
-function getKeywords() {
-  return Object.keys(gYoutubeCache)
 }
