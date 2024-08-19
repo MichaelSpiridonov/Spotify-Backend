@@ -6,7 +6,7 @@ import { getVideos } from './youtube.controller.js'
 
 const router = express.Router()
 
-router.get('/', log, getVideos)
+router.get('/:query', log, getVideos)
 
 
 
